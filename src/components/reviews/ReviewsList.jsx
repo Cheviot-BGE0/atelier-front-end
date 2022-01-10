@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import API_KEY from '../../config.js';
+import { API_KEY, API_PROXY_URL } from '../../config.js';
 import ReviewTile from './ReviewTile.jsx';
 
 class ReviewsList extends React.Component {
@@ -20,7 +20,7 @@ class ReviewsList extends React.Component {
     this.setState({ votedHelpful });
     const postConfig = {
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/${id}/helpful`,
+      url: `${API_PROXY_URL}/reviews/${id}/helpful`,
       headers: {
         Authorization: API_KEY,
       }

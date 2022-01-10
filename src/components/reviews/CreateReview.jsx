@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import API_KEY from '../../config.js';
+import { API_KEY, API_PROXY_URL } from '../../config.js';
 import AttatchImage from '../shared/AttatchImage.jsx';
 import StarInput from '../shared/StarInput.jsx';
 
@@ -134,7 +134,7 @@ class CreateReview extends React.Component {
 
       const postConfig = {
         method: 'post',
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+        url: `${API_PROXY_URL}/reviews`,
         headers: {
           Authorization: API_KEY,
         },

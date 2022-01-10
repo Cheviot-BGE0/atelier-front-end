@@ -5,7 +5,7 @@ import Reviews from './components/reviews/Reviews.jsx';
 import QuestionsAnswers from './components/questions/QuestionsAnswers.jsx';
 import Related from './components/related/Related.jsx';
 
-import API_KEY from './config.js';
+import { API_KEY, API_PROXY_URL } from './config.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class App extends React.Component {
   componentDidMount() {
     const intializationConfig = {
       method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products',
+      url: `${API_PROXY_URL}/products`,
       headers: {
         Authorization: API_KEY,
       },
@@ -79,19 +79,19 @@ class App extends React.Component {
 
     const productRequestRequestConfig = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${productIdToGet}`,
+      url: `${API_PROXY_URL}/products/${productIdToGet}`,
       headers: {Authorization: API_KEY}
     };
 
     const stylesRequestConfig = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${productIdToGet}/styles`,
+      url: `${API_PROXY_URL}/products/${productIdToGet}/styles`,
       headers: {Authorization: API_KEY}
     };
 
     const reviewsRequestConfig = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/meta?product_id=${productIdToGet}`,
+      url: `${API_PROXY_URL}/reviews/meta?product_id=${productIdToGet}`,
       headers: {Authorization: API_KEY}
     };
 
@@ -161,9 +161,9 @@ class App extends React.Component {
                 />
                 <QuestionsAnswers key={`${productId}-3`} productId={productId} />
                 <Reviews key={`${productId}-4`} productId={productId} />
-              <div id='footer'>
-                <div className='credits'>Granite Devs: ByungChan Lee | Andrew Carnero | Bryan Ramirez | Johannes Niemelä</div>
-              </div>
+                <div id='footer'>
+                  <div className='credits'>Granite Devs: ByungChan Lee | Andrew Carnero | Bryan Ramirez | Johannes Niemelä</div>
+                </div>
               </div>
             </div>
           </div>
