@@ -16,6 +16,9 @@ class App extends React.Component {
       initialRequestMade: false,
       renderer: 0
     };
+
+    localStorage.clear();
+
     this.updateAppProductId = this.updateAppProductId.bind(this);
     this.addItemToOutfit = this.addItemToOutfit.bind(this);
     this.removeItemFromOutfit = this.removeItemFromOutfit.bind(this);
