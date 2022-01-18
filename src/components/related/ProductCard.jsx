@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import API_KEY from '../../config.js';
+import { API_KEY, API_PROXY_URL } from '../../config.js';
 
 import StarRating from '../shared/StarRating.jsx';
 import ActionButton from './ActionButton.jsx';
@@ -22,7 +22,7 @@ class ProductCard extends React.Component {
       currentProductFeatures: {name: '', features: []},
       initialRequestMade: false,
       hideOverwrite: false
-    }
+    };
     this.actionBtnClick = this.actionBtnClick.bind(this);
   }
 
@@ -42,7 +42,7 @@ class ProductCard extends React.Component {
 
       const infoRequestConfig = {
         method: 'get',
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${productIdToGet}`,
+        url: `${API_PROXY_URL}/products/${productIdToGet}`,
         headers: {Authorization: API_KEY}
       };
 
@@ -87,7 +87,7 @@ class ProductCard extends React.Component {
 
       const pricePicsRequestConfig = {
         method: 'get',
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${productIdToGet}/styles`,
+        url: `${API_PROXY_URL}/products/${productIdToGet}/styles`,
         headers: {Authorization: API_KEY}
       };
 
@@ -114,7 +114,7 @@ class ProductCard extends React.Component {
 
       const ratingRequestConfig = {
         method: 'get',
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/meta?product_id=${productIdToGet}`,
+        url: `${API_PROXY_URL}/reviews/meta?product_id=${productIdToGet}`,
         headers: {Authorization: API_KEY}
       };
 
@@ -179,18 +179,18 @@ class ProductCard extends React.Component {
           <div className={hideCard ? 'product-card hidden' : 'product-card'}>
             <ActionButton actionBtnClick={this.actionBtnClick}
               currentList={currentList}/>
-              <img className='card-img' src={primaryImg}
-                alt={`Product thumbnail image for ${name}`}
-                onClick={() => { updateAppProductId(productCardId); }}></img>
-              <div className='card-info' onClick={() => { updateAppProductId(productCardId); }}>
-                <p className='card-category'>{category}</p>
-                <p className='card-name'>{name}</p>
-                <p className='card-price'>{'$'}{price}</p>
-                <p className='card-sale'>{salePrice}</p>
+            <img className='card-img' src={primaryImg}
+              alt={`Product thumbnail image for ${name}`}
+              onClick={() => { updateAppProductId(productCardId); }}></img>
+            <div className='card-info' onClick={() => { updateAppProductId(productCardId); }}>
+              <p className='card-category'>{category}</p>
+              <p className='card-name'>{name}</p>
+              <p className='card-price'>{'$'}{price}</p>
+              <p className='card-sale'>{salePrice}</p>
               <div className='card-rating'>
                 <StarRating rating={rating}/>
               </div>
-              </div>
+            </div>
           </div>
         </div>
       );

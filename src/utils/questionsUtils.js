@@ -1,11 +1,11 @@
-import API_KEY from "../config.js";
+import { API_KEY, API_PROXY_URL } from "../config.js";
 import axios from "axios";
 
 export function getQuestions(productId) {
   return new Promise((resolve, reject) => {
     const config = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions?product_id=${productId}&count=50`,
+      url: `${API_PROXY_URL}/qa/questions?product_id=${productId}&count=50`,
       headers: {
         Authorization: API_KEY,
       },
@@ -28,7 +28,7 @@ export function postQuestion(question, productId) {
 
     const config = {
       method: "post",
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions?product_id=${productId}`,
+      url: `${API_PROXY_URL}/qa/questions?product_id=${productId}`,
       headers: {
         Authorization: API_KEY,
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export function putHelpfulQuestion(question_id) {
   return new Promise((resolve, reject) => {
     const config = {
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${question_id}/helpful`,
+      url: `${API_PROXY_URL}/qa/questions/${question_id}/helpful`,
       headers: {
         'Authorization': API_KEY,
         'Content-Type': 'Application/json'
@@ -72,7 +72,7 @@ export function getAnswers(questionId) {
   return new Promise((resolve, reject) => {
     const config = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${questionId}/answers?count=50`,
+      url: `${API_PROXY_URL}/qa/questions/${questionId}/answers?count=50`,
       headers: {
         'Authorization': API_KEY
       }
@@ -96,7 +96,7 @@ export function postAnswer(answer, questionId) {
 
     const config = {
       method: 'post',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${questionId}/answers`,
+      url: `${API_PROXY_URL}/qa/questions/${questionId}/answers`,
       headers: {
         'Authorization': API_KEY,
         'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ export function putHelpfulAnswer(answerId) {
   return new Promise((resolve, reject) => {
     const config = {
       method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/answers/${answerId}/helpful`,
+      url: `${API_PROXY_URL}/qa/answers/${answerId}/helpful`,
       headers: {
         'Authorization': API_KEY,
         'Content-Type': 'Application/json'

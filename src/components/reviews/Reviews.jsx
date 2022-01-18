@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import API_KEY from '../../config.js';
+import { API_KEY, API_PROXY_URL } from '../../config.js';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import CreateReview from './CreateReview.jsx';
@@ -52,7 +52,7 @@ class Reviews extends React.Component {
     if (productId && !isLoading) {
       const intializationConfig = {
         method: 'get',
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+        url: `${API_PROXY_URL}/reviews`,
         headers: {
           Authorization: API_KEY,
         },

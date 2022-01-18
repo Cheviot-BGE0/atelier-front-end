@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import API_KEY from '../../config.js';
+import { API_KEY, API_PROXY_URL } from '../../config.js';
 
 import ProductCard from './ProductCard.jsx';
 import CompareModal from './CompareModal.jsx';
@@ -34,7 +34,7 @@ class RelatedProductsList extends React.Component {
 
         const relatedIdsRequestConfig = {
           method: 'get',
-          url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${productIdToGet}/related`,
+          url: `${API_PROXY_URL}/products/${productIdToGet}/related`,
           headers: {Authorization: API_KEY}
         };
 
